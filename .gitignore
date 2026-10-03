@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+dist-ssr/
+
+# Playwright output
+.playwright-mcp/
+playwright-report/
+test-results/
+blob-report/
+
+# Environment variables (NEVER commit these)
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Scripts secrets (service role key etc.)
+scripts/.env
+scripts/.env.*
+
+# Local login test script
+test-login.js

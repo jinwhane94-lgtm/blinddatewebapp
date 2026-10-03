@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-800 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(247, 37, 133, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(58, 12, 163, 0.06) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Chip / Tag button UI */
+  .chip {
+    @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium
+           border-2 border-gray-200 text-gray-600 bg-white
+           cursor-pointer transition-all duration-150 select-none;
+  }
+  .chip:hover {
+    @apply border-brand-300 text-brand-600 bg-brand-50;
+  }
+  .chip.selected {
+    @apply border-brand-500 text-white bg-brand-500;
+  }
+  .chip.selected:hover {
+    @apply border-brand-600 bg-brand-600;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200
+           bg-white text-gray-800 placeholder-gray-400
+           focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100
+           transition-all duration-150;
+  }
+  .form-input:disabled {
+    @apply bg-gray-50 text-gray-400 cursor-not-allowed;
+  }
+
+  /* Select dropdown */
+  .form-select {
+    @apply form-input appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold text-white
+           bg-gradient-to-r from-brand-500 to-brand-600
+           hover:from-brand-600 hover:to-brand-700
+           active:from-brand-700 active:to-brand-800
+           disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-lg shadow-brand-200
+           transition-all duration-150;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold
+           text-brand-600 bg-white border-2 border-brand-200
+           hover:bg-brand-50 hover:border-brand-400
+           active:bg-brand-100
+           disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-150;
+  }
+
+  /* Section card */
+  .section-card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6;
+  }
+
+  /* Label */
+  .form-label {
+    @apply block text-sm font-semibold text-gray-700 mb-2;
+  }
+  .form-label .required {
+    @apply text-brand-500 ml-1;
+  }
+
+  /* Error message */
+  .form-error {
+    @apply text-xs text-red-500 mt-1 flex items-center gap-1;
+  }
+
+  /* Status badge */
+  .badge-pending {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-amber-100 text-amber-700 border border-amber-200;
+  }
+  .badge-approved {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-emerald-100 text-emerald-700 border border-emerald-200;
+  }
+  .badge-rejected {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-red-100 text-red-700 border border-red-200;
+  }
+}
