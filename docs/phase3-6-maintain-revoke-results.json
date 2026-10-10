@@ -1,0 +1,70 @@
+{
+  "projectRef": "icwptulzrxvasfwzuasl",
+  "migration": "20261004061844_revoke_client_maintain.sql",
+  "removed": [
+    {
+      "table": "coordinators",
+      "schema": "public",
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "table": "dating_profiles",
+      "schema": "public",
+      "grantee": "anon",
+      "grantor": "postgres",
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "table": "dating_profiles",
+      "schema": "public",
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    }
+  ],
+  "added": [],
+  "comparisons": [
+    {
+      "section": "tables",
+      "unchanged": true
+    },
+    {
+      "section": "columns",
+      "unchanged": true
+    },
+    {
+      "section": "indexes",
+      "unchanged": true
+    },
+    {
+      "section": "policies",
+      "unchanged": true
+    },
+    {
+      "section": "triggers",
+      "unchanged": true
+    },
+    {
+      "section": "functions",
+      "unchanged": true
+    },
+    {
+      "section": "constraints",
+      "unchanged": true
+    },
+    {
+      "section": "table_privileges",
+      "unchanged": true
+    },
+    {
+      "section": "private_schema_privileges",
+      "unchanged": true
+    }
+  ],
+  "onlyApprovedChanges": true
+}

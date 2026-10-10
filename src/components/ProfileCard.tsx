@@ -23,16 +23,16 @@ export function ProfileCard({ profile, onApprove, onReject, actionLoading }: Pro
   return (
     <div className="section-card hover:shadow-md transition-shadow duration-200">
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-lg font-bold text-gray-800">{profile.nickname}</h3>
+      <div className="flex items-start justify-between gap-3 mb-4">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <h3 className="break-words text-lg font-bold text-gray-800">{profile.nickname}</h3>
             {statusBadge[profile.status]}
           </div>
           <p className="text-sm text-gray-500">
             {profile.gender} · {profile.age}세 · {profile.height_cm}cm · {profile.mbti}
           </p>
-          <p className="text-sm text-gray-500">{profile.company}</p>
+          <p className="break-words text-sm text-gray-500">{profile.company}</p>
         </div>
         <div className="text-2xl">
           {profile.gender === '남' ? '👦' : '👩'}
@@ -65,6 +65,12 @@ export function ProfileCard({ profile, onApprove, onReject, actionLoading }: Pro
             <span className="text-gray-700">{tags(profile.preferred_animal_types)}</span>
           </div>
         )}
+        {profile.preferred_face_types.length > 0 && (
+          <div className="flex gap-1">
+            <span className="text-gray-400 shrink-0 w-20">얼굴 이미지</span>
+            <span className="min-w-0 break-words text-gray-700">{tags(profile.preferred_face_types)}</span>
+          </div>
+        )}
         {profile.preferred_body_types.length > 0 && (
           <div className="flex gap-1">
             <span className="text-gray-400 shrink-0 w-20">체형</span>
@@ -86,6 +92,18 @@ export function ProfileCard({ profile, onApprove, onReject, actionLoading }: Pro
           <div className="flex gap-1">
             <span className="text-gray-400 shrink-0 w-20">동물상</span>
             <span className="text-gray-700">{tags(profile.self_animal_types)}</span>
+          </div>
+        )}
+        {profile.self_skin_types.length > 0 && (
+          <div className="flex gap-1">
+            <span className="text-gray-400 shrink-0 w-20">피부</span>
+            <span className="min-w-0 break-words text-gray-700">{tags(profile.self_skin_types)}</span>
+          </div>
+        )}
+        {profile.self_face_types.length > 0 && (
+          <div className="flex gap-1">
+            <span className="text-gray-400 shrink-0 w-20">얼굴 이미지</span>
+            <span className="min-w-0 break-words text-gray-700">{tags(profile.self_face_types)}</span>
           </div>
         )}
         {profile.self_traits.length > 0 && (

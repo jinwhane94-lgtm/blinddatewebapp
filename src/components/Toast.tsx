@@ -28,11 +28,11 @@ export function Toast({ message, type, onClose, duration = 4000 }: ToastProps) {
   }
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-slide-up">
+    <div className="fixed bottom-6 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 animate-slide-up" role="status" aria-live="polite">
       <div className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-xl ${styles[type]} min-w-[280px] max-w-sm`}>
         <span className="text-lg font-bold">{icons[type]}</span>
         <span className="text-sm font-medium flex-1">{message}</span>
-        <button onClick={onClose} className="text-white/80 hover:text-white text-lg leading-none">
+        <button type="button" onClick={onClose} aria-label="알림 닫기" className="min-h-11 min-w-11 text-white/80 hover:text-white text-lg leading-none">
           ×
         </button>
       </div>

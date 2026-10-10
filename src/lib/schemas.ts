@@ -4,7 +4,7 @@ export const applyFormSchema = z
   .object({
     coordinator_id: z.string().min(1, '주선자를 선택해주세요.'),
     nickname: z.string().min(1, '닉네임을 입력해주세요.').max(20),
-    gender: z.enum(['남', '여']).refine((v) => v === '남' || v === '여', { message: '성별을 선택해주세요.' }),
+    gender: z.enum(['남', '여'], { error: '성별을 선택해주세요.' }),
     age: z
       .number({ message: '나이를 입력해주세요.' })
       .int()
@@ -15,6 +15,11 @@ export const applyFormSchema = z
       .int()
       .positive('키를 올바르게 입력해주세요.'),
     mbti: z.string().min(1, 'MBTI를 선택해주세요.'),
+    phone_number: z
+      .string()
+      .trim()
+      .regex(/^01[016789]-?\d{3,4}-?\d{4}$/, '휴대폰 번호를 올바르게 입력해주세요.'),
+    kakao_notification_enabled: z.boolean(),
 
     // 선호 외모
     preferred_skin_types: z.array(z.string()).min(1, '피부 특성을 하나 이상 선택해주세요.'),
@@ -37,6 +42,7 @@ export const applyFormSchema = z
     self_face_types: z.array(z.string()).min(1, '나의 얼굴 이미지를 하나 이상 선택해주세요.'),
     self_traits: z.array(z.string()).min(1, '나의 특징을 하나 이상 선택해주세요.'),
     self_body_type: z.string().min(1, '나의 체형을 선택해주세요.'),
+    introduction: z.string().trim().min(1, '간단한 자기소개를 입력해주세요.').max(500, '자기소개는 500자 이내로 입력해주세요.'),
   })
   .superRefine((data, ctx) => {
     if (!data.preferred_age_any) {

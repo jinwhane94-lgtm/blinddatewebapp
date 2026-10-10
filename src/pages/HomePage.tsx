@@ -1,8 +1,27 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-export default function HomePage() {
+interface HomePageProps {
+  manager?: { name: string; onLogout: () => void }
+}
+
+export default function HomePage({ manager }: HomePageProps) {
+  const [year] = useState(() => new Date().getFullYear())
   return (
     <div className="min-h-screen flex flex-col">
+      {manager && (
+        <header className="border-b border-gray-100 bg-white">
+          <div className="max-w-5xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-base font-bold text-gray-800 break-words min-w-0">
+              {manager.name} 주선자<span aria-hidden="true" className="ml-1 text-sm">👑</span>
+            </h2>
+            <div className="ml-auto flex flex-wrap items-center gap-3">
+              <Link to="/manager/requests" className="btn-primary text-sm">소개팅 매물 승인하기</Link>
+              <button type="button" onClick={manager.onLogout} className="text-sm text-gray-500 hover:text-red-500">로그아웃</button>
+            </div>
+          </div>
+        </header>
+      )}
       {/* Hero */}
       <div className="flex-1 flex flex-col items-center justify-center px-5 py-16 text-center">
         <div className="animate-slide-up max-w-sm mx-auto">
@@ -16,15 +35,31 @@ export default function HomePage() {
 
           {/* CTA */}
           <Link to="/apply" className="btn-primary w-full text-base py-4 block text-center">
-            소개팅 매물 등록하기 →
+            직접 소개팅 매물 등록하기 →
+          </Link>
+          <Link to="/profiles" className="btn-secondary mt-3 w-full text-base py-4">
+            소개팅 매물 둘러보기 →
           </Link>
 
-          <p className="text-sm text-gray-400 mt-5">
-            주선자라면?{' '}
-            <Link to="/manager/login" className="text-brand-500 font-semibold hover:underline">
-              주선자 로그인
+          {!manager && <><div className="grid grid-cols-2 gap-3 mt-4">
+            <Link
+              to="/login"
+              className="rounded-xl border border-brand-200 bg-brand-50 px-3 py-3 text-sm font-semibold text-brand-600 transition hover:bg-brand-100"
+            >
+              일반 사용자<span aria-hidden="true" className="ml-1 text-xs">❤️</span> 로그인
             </Link>
-          </p>
+            <Link
+              to="/manager/login"
+              className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100"
+            >
+              주선자<span aria-hidden="true" className="ml-1 text-xs">👑</span> 로그인
+            </Link>
+          </div>
+          <p className="text-xs text-gray-400 mt-4">
+            <Link to="/manager/login" className="text-brand-500 font-semibold hover:underline">
+              주선자<span aria-hidden="true" className="ml-1 text-xs">👑</span> 회원가입
+            </Link>
+          </p></>}
         </div>
       </div>
 
@@ -52,7 +87,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <div className="text-center py-6 text-xs text-gray-300">
-        © 2024 소개팅 매칭 서비스
+        © {year} 소개팅 매칭 서비스
       </div>
     </div>
   )

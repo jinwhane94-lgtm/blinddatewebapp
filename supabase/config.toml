@@ -1,0 +1,14 @@
+[functions.process-like-notification]
+verify_jwt = false
+
+# Local Auth policy only. This file does NOT change hosted Auth settings.
+# TODO_EXTERNAL_SETUP: enable Email provider and disable Confirm email in the
+# intended hosted project's Dashboard only after explicit approval.
+[auth]
+enable_signup = true
+enable_anonymous_sign_ins = false
+minimum_password_length = 8
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false

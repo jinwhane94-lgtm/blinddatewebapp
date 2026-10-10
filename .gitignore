@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+supabase/.temp/
 .pnp
 .pnp.js
 
@@ -30,6 +31,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.devserver/
 
 # TypeScript
 *.tsbuildinfo

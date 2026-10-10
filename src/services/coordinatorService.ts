@@ -6,10 +6,7 @@ import type { CoordinatorPublic } from '../types'
  */
 export async function getActiveCoordinators(): Promise<CoordinatorPublic[]> {
   const { data, error } = await supabase
-    .from('coordinators')
-    .select('id, name')
-    .eq('active', true)
-    .order('name', { ascending: true })
+    .rpc('list_active_coordinators')
 
   if (error) throw error
   return data ?? []

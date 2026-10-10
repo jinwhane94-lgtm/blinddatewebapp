@@ -50,6 +50,9 @@ export interface DatingProfile {
   // 본인 체형
   self_body_type: string
 
+  // 자기소개
+  introduction: string | null
+
   // 상태
   status: ProfileStatus
   rejection_reason: string | null
@@ -67,6 +70,8 @@ export interface CreateProfilePayload {
   company: string
   height_cm: number
   mbti: string
+  phone_number: string
+  kakao_notification_enabled: boolean
   preferred_skin_types: string[]
   preferred_animal_types: string[]
   preferred_face_types: string[]
@@ -83,4 +88,5 @@ export interface CreateProfilePayload {
   self_face_types: string[]
   self_traits: string[]
   self_body_type: string
+  introduction: string
 }

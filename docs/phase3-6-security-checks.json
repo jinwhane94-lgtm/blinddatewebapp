@@ -1,0 +1,179 @@
+{
+  "projectRef": "icwptulzrxvasfwzuasl",
+  "observedDateKST": "2026-10-04",
+  "metadata": {
+    "roles": [
+      {
+        "name": "anon",
+        "create_db": false,
+        "superuser": false,
+        "bypass_rls": false,
+        "create_role": false
+      },
+      {
+        "name": "authenticated",
+        "create_db": false,
+        "superuser": false,
+        "bypass_rls": false,
+        "create_role": false
+      }
+    ],
+    "maintain": [
+      {
+        "role": "anon",
+        "table": "private.admin_audit_logs",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.admin_audit_logs",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.admin_members",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.admin_members",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.like_transactions",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.like_transactions",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.like_wallets",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.like_wallets",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.match_decisions",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.match_decisions",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.notification_logs",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.notification_logs",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.payments",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.payments",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.profile_contacts",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.profile_contacts",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.profile_owners",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.profile_owners",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "private.profile_photos",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "private.profile_photos",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "public.coordinators",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "public.coordinators",
+        "allowed": true
+      },
+      {
+        "role": "anon",
+        "table": "public.dating_profiles",
+        "allowed": true
+      },
+      {
+        "role": "authenticated",
+        "table": "public.dating_profiles",
+        "allowed": true
+      },
+      {
+        "role": "anon",
+        "table": "public.likes",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "public.likes",
+        "allowed": false
+      },
+      {
+        "role": "anon",
+        "table": "public.matches",
+        "allowed": false
+      },
+      {
+        "role": "authenticated",
+        "table": "public.matches",
+        "allowed": false
+      }
+    ],
+    "worker_rpc": [
+      {
+        "anon": false,
+        "name": "claim_like_notification",
+        "service_role": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "finish_like_notification",
+        "service_role": true,
+        "authenticated": false
+      }
+    ],
+    "memberships": []
+  }
+}

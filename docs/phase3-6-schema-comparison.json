@@ -1,0 +1,80 @@
+{
+  "localPostgresVersion": "18.3",
+  "normalization": {
+    "expectedNotNullConstraints": 89,
+    "actualNotNullConstraints": 0,
+    "nullabilityComparedIn": "columns"
+  },
+  "migrationSha256": {
+    "001_init.sql": "491705205eac378666ed0a25c239a356edb4459226b914ac5be68a38a508d094",
+    "002_rls.sql": "1a2d19c228bc0cddf3b2779b2b474ba8cfeb4da9c3f4179f958af5bb929cc197",
+    "003_like_notifications.sql": "9c0d251a3e85fbce1aef92d0dbdcfbfa0e8cae4d23ce383bcadc533536672a23",
+    "20261003140239_phase3_ownership_security.sql": "f07bbe6401c3bd848bf83456f8160397e40f21bd1eb015933bb4dd4c0ba660c9"
+  },
+  "comparisons": [
+    {
+      "section": "tables",
+      "expectedCount": 14,
+      "actualCount": 14,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "columns",
+      "expectedCount": 115,
+      "actualCount": 115,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "indexes",
+      "expectedCount": 44,
+      "actualCount": 44,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "policies",
+      "expectedCount": 2,
+      "actualCount": 2,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "triggers",
+      "expectedCount": 4,
+      "actualCount": 4,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "functions",
+      "expectedCount": 18,
+      "actualCount": 18,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "constraints",
+      "expectedCount": 85,
+      "actualCount": 85,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "table_privileges",
+      "expectedCount": 28,
+      "actualCount": 28,
+      "equal": true,
+      "differences": []
+    },
+    {
+      "section": "private_schema_privileges",
+      "expectedCount": 2,
+      "actualCount": 2,
+      "equal": true,
+      "differences": []
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,498 @@
+{
+  "projectRef": "icwptulzrxvasfwzuasl",
+  "observedDateKST": "2026-10-04",
+  "metadata": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "auth_user_id",
+        "type": "uuid",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "email",
+        "type": "text",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "true",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "coordinator_id",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "nickname",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "gender",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "age",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "company",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "height_cm",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "mbti",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_skin_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_animal_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_face_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_age_min",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_age_max",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_age_any",
+        "type": "bool",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "false",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_height_min",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_height_max",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_height_any",
+        "type": "bool",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "false",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_body_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_traits",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_skin_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_animal_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_face_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_traits",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_body_type",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'pending'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "reviewed_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "reviewed_by",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      }
+    ],
+    "indexes": [
+      {
+        "indexdef": "CREATE UNIQUE INDEX coordinators_email_key ON public.coordinators USING btree (email)",
+        "indexname": "coordinators_email_key",
+        "tablename": "coordinators",
+        "schemaname": "public",
+        "tablespace": null
+      },
+      {
+        "indexdef": "CREATE UNIQUE INDEX coordinators_pkey ON public.coordinators USING btree (id)",
+        "indexname": "coordinators_pkey",
+        "tablename": "coordinators",
+        "schemaname": "public",
+        "tablespace": null
+      },
+      {
+        "indexdef": "CREATE UNIQUE INDEX dating_profiles_pkey ON public.dating_profiles USING btree (id)",
+        "indexname": "dating_profiles_pkey",
+        "tablename": "dating_profiles",
+        "schemaname": "public",
+        "tablespace": null
+      }
+    ],
+    "policies": [
+      {
+        "cmd": "SELECT",
+        "qual": "(active = true)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "coordinators",
+        "permissive": "PERMISSIVE",
+        "policyname": "anyone can read active coordinator names",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "anon"
+        ],
+        "tablename": "dating_profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "anon can insert profiles",
+        "schemaname": "public",
+        "with_check": "(status = 'pending'::text)"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(coordinator_id IN ( SELECT coordinators.id\n   FROM coordinators\n  WHERE ((coordinators.auth_user_id = auth.uid()) AND (coordinators.active = true))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "dating_profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "coordinator can select own profiles",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "(coordinator_id IN ( SELECT coordinators.id\n   FROM coordinators\n  WHERE ((coordinators.auth_user_id = auth.uid()) AND (coordinators.active = true))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "dating_profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "coordinator can update own profiles",
+        "schemaname": "public",
+        "with_check": "(coordinator_id IN ( SELECT coordinators.id\n   FROM coordinators\n  WHERE ((coordinators.auth_user_id = auth.uid()) AND (coordinators.active = true))))"
+      }
+    ],
+    "triggers": [
+      {
+        "name": "set_updated_at",
+        "type": 19,
+        "table": "dating_profiles",
+        "schema": "public",
+        "enabled": "O",
+        "function": "public.handle_updated_at",
+        "definition": "CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.dating_profiles FOR EACH ROW EXECUTE FUNCTION handle_updated_at()"
+      }
+    ],
+    "functions": [
+      {
+        "acl": "{=X/postgres,postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+        "body": "\r\nBEGIN\r\n  NEW.updated_at = now();\r\n  RETURN NEW;\r\nEND;\r\n",
+        "name": "handle_updated_at",
+        "config": null,
+        "result": "trigger",
+        "schema": "public",
+        "definer": false,
+        "arguments": ""
+      }
+    ],
+    "connection": {
+      "role": "supabase_read_only_user",
+      "read_only": "on",
+      "history_table": null,
+      "default_read_only": "on"
+    },
+    "constraints": [
+      {
+        "name": "coordinators_auth_user_id_fkey",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (auth_user_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "coordinators_email_key",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "UNIQUE (email)"
+      },
+      {
+        "name": "coordinators_pkey",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "dating_profiles_age_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((age > 0))"
+      },
+      {
+        "name": "dating_profiles_coordinator_id_fkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (coordinator_id) REFERENCES coordinators(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "dating_profiles_gender_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((gender = ANY (ARRAY['남'::text, '여'::text])))"
+      },
+      {
+        "name": "dating_profiles_height_cm_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((height_cm > 0))"
+      },
+      {
+        "name": "dating_profiles_pkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "dating_profiles_preferred_age_max_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_age_max IS NULL) OR (preferred_age_max > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_age_min_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_age_min IS NULL) OR (preferred_age_min > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_height_max_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_height_max IS NULL) OR (preferred_height_max > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_height_min_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_height_min IS NULL) OR (preferred_height_min > 0)))"
+      },
+      {
+        "name": "dating_profiles_reviewed_by_fkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (reviewed_by) REFERENCES coordinators(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "dating_profiles_status_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'approved'::text, 'rejected'::text])))"
+      }
+    ]
+  }
+}

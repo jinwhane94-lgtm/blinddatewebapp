@@ -1,0 +1,153 @@
+{
+  "projectRef": "icwptulzrxvasfwzuasl",
+  "checkedAt": "2026-10-04T05:57:40.272Z",
+  "method": "GET only; table/RPC list requests use limit=0",
+  "results": [
+    {
+      "id": "private.profile_contacts",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.profile_contacts",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.profile_photos",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.profile_photos",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.notification_logs",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.notification_logs",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.payments",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.payments",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.like_wallets",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.like_wallets",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.profile_owners",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.profile_owners",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "private.like_transactions",
+      "status": 406,
+      "code": "PGRST106",
+      "pass": true
+    },
+    {
+      "id": "public-alias.like_transactions",
+      "status": 404,
+      "code": "PGRST205",
+      "pass": true
+    },
+    {
+      "id": "anon.coordinators",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "anon.likes",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "anon.matches",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "anon.profiles-zero-rows",
+      "status": 200,
+      "code": null,
+      "pass": true
+    },
+    {
+      "id": "anon.coordinator-list-zero-rows",
+      "status": 200,
+      "code": null,
+      "pass": true
+    },
+    {
+      "id": "anon.rpc.get_my_profile_id",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "anon.rpc.get_my_like_balance",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "anon.rpc.is_current_account_active",
+      "status": 401,
+      "code": "42501",
+      "pass": true
+    },
+    {
+      "id": "invalid-jwt",
+      "status": 401,
+      "code": "PGRST301",
+      "pass": true
+    }
+  ],
+  "authSettings": {
+    "emailEnabled": false,
+    "signupDisabled": false,
+    "emailAutoconfirm": false,
+    "anonymousEnabled": false
+  },
+  "pass": true,
+  "limitations": "No real authenticated session, writes, user/profile rows, payment or notification requests."
+}

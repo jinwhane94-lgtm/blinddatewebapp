@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useSession } from '../hooks/useSession'
+import { supabase } from '../lib/supabase'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { applyFormSchema, type ApplyFormData } from '../lib/schemas'
@@ -29,7 +32,10 @@ import { Toast, useToast } from '../components/Toast'
 type SubmitState = 'idle' | 'submitting' | 'success'
 
 export default function ApplyPage() {
+  const { session, loading: sessionLoading } = useSession()
   const [coordinators, setCoordinators] = useState<CoordinatorPublic[]>([])
+  const [coordinatorsLoading, setCoordinatorsLoading] = useState(true)
+  const [coordinatorsError, setCoordinatorsError] = useState(false)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const { toast, showToast, hideToast } = useToast()
 
@@ -50,6 +56,8 @@ export default function ApplyPage() {
       company: '',
       height_cm: undefined,
       mbti: '',
+      phone_number: '',
+      kakao_notification_enabled: false,
       preferred_skin_types: [],
       preferred_animal_types: [],
       preferred_face_types: [],
@@ -66,6 +74,7 @@ export default function ApplyPage() {
       self_face_types: [],
       self_traits: [],
       self_body_type: '',
+      introduction: '',
     },
   })
 
@@ -73,12 +82,21 @@ export default function ApplyPage() {
 
   // Load coordinators
   useEffect(() => {
+    setCoordinatorsError(false)
     getActiveCoordinators()
       .then(setCoordinators)
-      .catch(() => showToast('주선자 목록을 불러오지 못했습니다.', 'error'))
+      .catch(() => {
+        setCoordinatorsError(true)
+        showToast('주선자 목록을 불러오지 못했습니다.', 'error')
+      })
+      .finally(() => setCoordinatorsLoading(false))
   }, [showToast])
 
   const onSubmit = async (data: ApplyFormData) => {
+    if (!session || session.user.is_anonymous) {
+      showToast('프로필 등록을 위해 먼저 로그인해주세요.', 'error')
+      return
+    }
     setSubmitState('submitting')
     try {
       await createProfile({
@@ -89,6 +107,8 @@ export default function ApplyPage() {
         company: data.company,
         height_cm: data.height_cm,
         mbti: data.mbti,
+        phone_number: data.phone_number,
+        kakao_notification_enabled: data.kakao_notification_enabled,
         preferred_skin_types: data.preferred_skin_types,
         preferred_animal_types: data.preferred_animal_types,
         preferred_face_types: data.preferred_face_types,
@@ -105,6 +125,7 @@ export default function ApplyPage() {
         self_face_types: data.self_face_types,
         self_traits: data.self_traits,
         self_body_type: data.self_body_type,
+        introduction: data.introduction,
       })
       setSubmitState('success')
     } catch (error: unknown) {
@@ -146,24 +167,53 @@ export default function ApplyPage() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate aria-busy={submitState === 'submitting'}>
         <div className="max-w-lg mx-auto px-4 -mt-6 space-y-5">
+          {!sessionLoading && (!session || session.user.is_anonymous) && (
+            <div className="section-card text-sm text-gray-600">
+              프로필을 등록하려면 <Link to="/login" className="font-semibold text-brand-500">로그인</Link> 또는{' '}
+              <Link to="/signup" className="font-semibold text-brand-500">회원가입</Link>을 해주세요.
+            </div>
+          )}
+          {session && !session.user.is_anonymous && (
+            <div className="section-card flex items-center justify-between text-sm text-gray-600">
+              <span>로그인되었습니다.</span>
+              <button type="button" className="text-brand-500" onClick={async () => {
+                const { error } = await supabase.auth.signOut()
+                if (error) showToast('로그아웃하지 못했습니다. 다시 시도해주세요.', 'error')
+              }}>로그아웃</button>
+            </div>
+          )}
 
           {/* 주선자 선택 */}
           <SectionCard title="담당 주선자" icon="👤">
-            <label className="form-label">
+            <label htmlFor="coordinator_id" className="form-label">
               주선자 선택 <span className="required">*</span>
             </label>
             <select
+              id="coordinator_id"
               {...register('coordinator_id')}
               className="form-select"
               defaultValue=""
+              disabled={coordinatorsLoading || coordinatorsError || coordinators.length === 0}
+              aria-invalid={Boolean(errors.coordinator_id)}
             >
-              <option value="" disabled>주선자를 선택해주세요</option>
+              <option value="" disabled>
+                {coordinatorsLoading
+                  ? '주선자 목록을 불러오는 중...'
+                  : coordinatorsError
+                    ? '주선자 목록을 불러오지 못했습니다'
+                    : coordinators.length === 0
+                      ? '현재 선택 가능한 주선자가 없습니다'
+                      : '주선자를 선택해주세요'}
+              </option>
               {coordinators.map((c) => (
                 <option key={c.id} value={c.id}>{c.name}</option>
               ))}
             </select>
+            {!coordinatorsLoading && !coordinatorsError && coordinators.length === 0 && (
+              <p className="mt-2 text-xs text-amber-600">현재 활성화된 주선자가 없습니다. 담당 주선자에게 문의해주세요.</p>
+            )}
             {errors.coordinator_id && <p className="form-error">{errors.coordinator_id.message}</p>}
           </SectionCard>
 
@@ -172,8 +222,8 @@ export default function ApplyPage() {
             <div className="space-y-4">
               {/* 닉네임 */}
               <div>
-                <label className="form-label">닉네임 <span className="required">*</span></label>
-                <input {...register('nickname')} className="form-input" placeholder="예: 민수" />
+                <label htmlFor="nickname" className="form-label">닉네임 <span className="required">*</span></label>
+                <input id="nickname" {...register('nickname')} className="form-input" placeholder="예: 민수" aria-invalid={Boolean(errors.nickname)} />
                 {errors.nickname && <p className="form-error">{errors.nickname.message}</p>}
               </div>
 
@@ -187,7 +237,13 @@ export default function ApplyPage() {
                     <SingleSelect
                       options={['남', '여']}
                       value={field.value ?? ''}
-                      onChange={field.onChange}
+                      onChange={(value) => {
+                        if (field.value !== value) {
+                          setValue('preferred_body_types', [])
+                          setValue('self_body_type', '')
+                        }
+                        field.onChange(value)
+                      }}
                       error={errors.gender?.message}
                     />
                   )}
@@ -196,39 +252,47 @@ export default function ApplyPage() {
 
               {/* 나이 */}
               <div>
-                <label className="form-label">나이 <span className="required">*</span></label>
+                <label htmlFor="age" className="form-label">나이 <span className="required">*</span></label>
                 <input
+                  id="age"
                   type="number"
+                  min="1"
+                  inputMode="numeric"
                   {...register('age', { valueAsNumber: true })}
                   className="form-input"
                   placeholder="실제 나이를 정확하게 입력해주세요"
+                  aria-invalid={Boolean(errors.age)}
                 />
                 {errors.age && <p className="form-error">{errors.age.message}</p>}
               </div>
 
               {/* 회사명 */}
               <div>
-                <label className="form-label">회사명 <span className="required">*</span></label>
-                <input {...register('company')} className="form-input" placeholder="現 직장명" />
+                <label htmlFor="company" className="form-label">회사명 <span className="required">*</span></label>
+                <input id="company" {...register('company')} className="form-input" placeholder="現 직장명" aria-invalid={Boolean(errors.company)} />
                 {errors.company && <p className="form-error">{errors.company.message}</p>}
               </div>
 
               {/* 키 */}
               <div>
-                <label className="form-label">키 (cm) <span className="required">*</span></label>
+                <label htmlFor="height_cm" className="form-label">키 (cm) <span className="required">*</span></label>
                 <input
+                  id="height_cm"
                   type="number"
+                  min="1"
+                  inputMode="numeric"
                   {...register('height_cm', { valueAsNumber: true })}
                   className="form-input"
                   placeholder="실제 키를 정확하게 입력해주세요"
+                  aria-invalid={Boolean(errors.height_cm)}
                 />
                 {errors.height_cm && <p className="form-error">{errors.height_cm.message}</p>}
               </div>
 
               {/* MBTI */}
               <div>
-                <label className="form-label">MBTI <span className="required">*</span></label>
-                <select {...register('mbti')} className="form-select" defaultValue="">
+                <label htmlFor="mbti" className="form-label">MBTI <span className="required">*</span></label>
+                <select id="mbti" {...register('mbti')} className="form-select" defaultValue="" aria-invalid={Boolean(errors.mbti)}>
                   <option value="" disabled>MBTI를 선택해주세요</option>
                   {MBTI_OPTIONS.map((m) => (
                     <option key={m} value={m}>{m}</option>
@@ -236,6 +300,45 @@ export default function ApplyPage() {
                 </select>
                 {errors.mbti && <p className="form-error">{errors.mbti.message}</p>}
               </div>
+            </div>
+          </SectionCard>
+
+          {/* 연락처 및 알림 수신 */}
+          <SectionCard title="연락처 및 알림" icon="📱">
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="phone_number" className="form-label">
+                  휴대폰 번호 <span className="required">*</span>
+                </label>
+                <input
+                  id="phone_number"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  {...register('phone_number')}
+                  className="form-input"
+                  placeholder="010-1234-5678"
+                  aria-invalid={Boolean(errors.phone_number)}
+                />
+                {errors.phone_number && <p className="form-error">{errors.phone_number.message}</p>}
+                <p className="mt-2 text-xs text-gray-400">
+                  휴대폰 번호는 알림 발송에만 사용되며 다른 일반 사용자에게 공개되지 않습니다.
+                </p>
+              </div>
+
+              <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-gray-50 p-4">
+                <input
+                  type="checkbox"
+                  {...register('kakao_notification_enabled')}
+                  className="mt-0.5 h-5 w-5 rounded border-gray-300 text-brand-500 focus:ring-brand-400"
+                />
+                <span>
+                  <span className="block text-sm font-semibold text-gray-700">카카오 알림 수신 동의</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-gray-500">
+                    새로운 호감이 도착하면 승인된 알림톡 템플릿으로 알려드립니다. 동의하지 않아도 프로필 등록은 가능합니다.
+                  </span>
+                </span>
+              </label>
             </div>
           </SectionCard>
 
@@ -463,6 +566,23 @@ export default function ApplyPage() {
                 />
               )}
             />
+          </SectionCard>
+
+          <SectionCard title="간단한 자기소개" icon="✍️">
+            <label htmlFor="introduction" className="form-label">
+              나를 소개해주세요 <span className="required">*</span>
+            </label>
+            <textarea
+              id="introduction"
+              {...register('introduction')}
+              rows={5}
+              maxLength={500}
+              className="form-input resize-y"
+              placeholder="취미, 관심사, 성격 등 나를 잘 보여주는 이야기를 적어주세요."
+              aria-invalid={Boolean(errors.introduction)}
+            />
+            <p className="mt-2 text-right text-xs text-gray-400">최대 500자</p>
+            {errors.introduction && <p className="form-error">{errors.introduction.message}</p>}
           </SectionCard>
 
           {/* 제출 버튼 */}

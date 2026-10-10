@@ -14,6 +14,7 @@ export function SingleSelect({ options, value, onChange, error }: SingleSelectPr
             key={opt}
             type="button"
             onClick={() => onChange(opt)}
+            aria-pressed={value === opt}
             className={`chip ${value === opt ? 'selected' : ''}`}
           >
             {opt}

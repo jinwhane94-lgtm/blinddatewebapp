@@ -9,8 +9,10 @@ export function MultiSelect({ options, value, onChange, error }: MultiSelectProp
   const toggle = (opt: string) => {
     if (value.includes(opt)) {
       onChange(value.filter((v) => v !== opt))
+    } else if (opt === '상관없음') {
+      onChange(['상관없음'])
     } else {
-      onChange([...value, opt])
+      onChange([...value.filter((v) => v !== '상관없음'), opt])
     }
   }
 
@@ -22,6 +24,7 @@ export function MultiSelect({ options, value, onChange, error }: MultiSelectProp
             key={opt}
             type="button"
             onClick={() => toggle(opt)}
+            aria-pressed={value.includes(opt)}
             className={`chip ${value.includes(opt) ? 'selected' : ''}`}
           >
             {opt}

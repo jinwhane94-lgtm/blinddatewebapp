@@ -29,9 +29,10 @@
 @layer components {
   /* Chip / Tag button UI */
   .chip {
-    @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium
+    @apply inline-flex min-h-11 items-center gap-1 px-3 py-2 rounded-full text-sm font-medium
            border-2 border-gray-200 text-gray-600 bg-white
-           cursor-pointer transition-all duration-150 select-none;
+           cursor-pointer transition-all duration-150 select-none
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2;
   }
   .chip:hover {
     @apply border-brand-300 text-brand-600 bg-brand-50;

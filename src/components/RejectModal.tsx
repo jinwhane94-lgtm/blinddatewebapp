@@ -15,8 +15,13 @@ export function RejectModal({ onConfirm, onCancel, isLoading }: RejectModalProps
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onCancel} />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 animate-slide-up">
-        <h3 className="text-lg font-bold text-gray-800 mb-2">반려 사유 입력</h3>
+      <div
+        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl animate-slide-up"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="reject-modal-title"
+      >
+        <h3 id="reject-modal-title" className="text-lg font-bold text-gray-800 mb-2">반려 사유 입력</h3>
         <p className="text-sm text-gray-500 mb-4">반려 사유를 입력해주세요. (선택)</p>
 
         <textarea

@@ -1,0 +1,2609 @@
+{
+  "projectRef": "icwptulzrxvasfwzuasl",
+  "observedDateKST": "2026-10-04",
+  "metadata": {
+    "tables": [
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "admin_audit_logs",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "admin_members",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "like_transactions",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "like_wallets",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "match_decisions",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "notification_logs",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "payments",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "profile_contacts",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "profile_owners",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "profile_photos",
+        "schema": "private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "coordinators",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "dating_profiles",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "likes",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "kind": "r",
+        "name": "matches",
+        "schema": "public",
+        "force_rls": false
+      }
+    ],
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "actor_user_id",
+        "type": "uuid",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "action",
+        "type": "text",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "admin_members",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "table": "admin_members",
+        "schema": "private",
+        "default": "true",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "kind",
+        "type": "text",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "delta",
+        "type": "int4",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "payment_id",
+        "type": "uuid",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "like_id",
+        "type": "uuid",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "like_transactions",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "like_wallets",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "balance",
+        "type": "int4",
+        "table": "like_wallets",
+        "schema": "private",
+        "default": "0",
+        "nullable": "NO"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "table": "like_wallets",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "match_id",
+        "type": "uuid",
+        "table": "match_decisions",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "match_decisions",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "decision",
+        "type": "text",
+        "table": "match_decisions",
+        "schema": "private",
+        "default": "'pending'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "decided_at",
+        "type": "timestamptz",
+        "table": "match_decisions",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "like_id",
+        "type": "uuid",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "recipient_id",
+        "type": "uuid",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "notification_type",
+        "type": "text",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "'kakao_alimtalk_like_received'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "'pending'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "attempts",
+        "type": "int2",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "0",
+        "nullable": "NO"
+      },
+      {
+        "name": "provider",
+        "type": "text",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "provider_message_id",
+        "type": "text",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "error",
+        "type": "text",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "locked_at",
+        "type": "timestamptz",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "sent_at",
+        "type": "timestamptz",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "match_id",
+        "type": "uuid",
+        "table": "notification_logs",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "payments",
+        "schema": "private",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "product",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": "'likes_10'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "amount",
+        "type": "int4",
+        "table": "payments",
+        "schema": "private",
+        "default": "1500",
+        "nullable": "NO"
+      },
+      {
+        "name": "like_quantity",
+        "type": "int4",
+        "table": "payments",
+        "schema": "private",
+        "default": "10",
+        "nullable": "NO"
+      },
+      {
+        "name": "currency",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": "'KRW'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "provider",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": "'kakaopay'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "environment",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "merchant_id",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "provider_payment_id",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "request_id",
+        "type": "uuid",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "payments",
+        "schema": "private",
+        "default": "'created'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "payments",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "approved_at",
+        "type": "timestamptz",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "credited_at",
+        "type": "timestamptz",
+        "table": "payments",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "phone_number",
+        "type": "text",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "kakao_notification_enabled",
+        "type": "bool",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": "false",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "kakao_id",
+        "type": "text",
+        "table": "profile_contacts",
+        "schema": "private",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "profile_owners",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "profile_owners",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "table": "profile_owners",
+        "schema": "private",
+        "default": "true",
+        "nullable": "NO"
+      },
+      {
+        "name": "linked_at",
+        "type": "timestamptz",
+        "table": "profile_owners",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "link_method",
+        "type": "text",
+        "table": "profile_owners",
+        "schema": "private",
+        "default": "'registration'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_id",
+        "type": "uuid",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "object_path",
+        "type": "text",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "position",
+        "type": "int2",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": "'pending'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "profile_photos",
+        "schema": "private",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "auth_user_id",
+        "type": "uuid",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "email",
+        "type": "text",
+        "table": "coordinators",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "true",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "coordinators",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "coordinator_id",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "nickname",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "gender",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "age",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "company",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "height_cm",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "mbti",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_skin_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_animal_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_face_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_age_min",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_age_max",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_age_any",
+        "type": "bool",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "false",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_height_min",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_height_max",
+        "type": "int4",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "preferred_height_any",
+        "type": "bool",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "false",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_body_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "preferred_traits",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_skin_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_animal_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_face_types",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_traits",
+        "type": "_text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "nullable": "NO"
+      },
+      {
+        "name": "self_body_type",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "'pending'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "text",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "reviewed_at",
+        "type": "timestamptz",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "reviewed_by",
+        "type": "uuid",
+        "table": "dating_profiles",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "likes",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "sender_profile_id",
+        "type": "uuid",
+        "table": "likes",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "recipient_profile_id",
+        "type": "uuid",
+        "table": "likes",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "likes",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "matches",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_low",
+        "type": "uuid",
+        "table": "matches",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "profile_high",
+        "type": "uuid",
+        "table": "matches",
+        "schema": "public",
+        "default": null,
+        "nullable": "NO"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "matches",
+        "schema": "public",
+        "default": "'mutual'::text",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "table": "matches",
+        "schema": "public",
+        "default": "now()",
+        "nullable": "NO"
+      },
+      {
+        "name": "resolved_at",
+        "type": "timestamptz",
+        "table": "matches",
+        "schema": "public",
+        "default": null,
+        "nullable": "YES"
+      }
+    ],
+    "indexes": [
+      {
+        "name": "admin_audit_actor_idx",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "definition": "CREATE INDEX admin_audit_actor_idx ON private.admin_audit_logs USING btree (actor_user_id, created_at DESC)"
+      },
+      {
+        "name": "admin_audit_logs_pkey",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX admin_audit_logs_pkey ON private.admin_audit_logs USING btree (id)"
+      },
+      {
+        "name": "admin_audit_profile_idx",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "definition": "CREATE INDEX admin_audit_profile_idx ON private.admin_audit_logs USING btree (profile_id)"
+      },
+      {
+        "name": "admin_members_pkey",
+        "table": "admin_members",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX admin_members_pkey ON private.admin_members USING btree (user_id)"
+      },
+      {
+        "name": "like_transactions_like_once",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX like_transactions_like_once ON private.like_transactions USING btree (like_id) WHERE (kind = 'sent_like'::text)"
+      },
+      {
+        "name": "like_transactions_operation_id_key",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX like_transactions_operation_id_key ON private.like_transactions USING btree (operation_id)"
+      },
+      {
+        "name": "like_transactions_payment_idx",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE INDEX like_transactions_payment_idx ON private.like_transactions USING btree (payment_id)"
+      },
+      {
+        "name": "like_transactions_pkey",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX like_transactions_pkey ON private.like_transactions USING btree (id)"
+      },
+      {
+        "name": "like_transactions_purchase_once",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX like_transactions_purchase_once ON private.like_transactions USING btree (payment_id) WHERE (kind = 'purchase'::text)"
+      },
+      {
+        "name": "like_transactions_user_created_idx",
+        "table": "like_transactions",
+        "schema": "private",
+        "definition": "CREATE INDEX like_transactions_user_created_idx ON private.like_transactions USING btree (user_id, created_at DESC)"
+      },
+      {
+        "name": "like_wallets_pkey",
+        "table": "like_wallets",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX like_wallets_pkey ON private.like_wallets USING btree (user_id)"
+      },
+      {
+        "name": "match_decisions_pkey",
+        "table": "match_decisions",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX match_decisions_pkey ON private.match_decisions USING btree (match_id, profile_id)"
+      },
+      {
+        "name": "match_decisions_profile_idx",
+        "table": "match_decisions",
+        "schema": "private",
+        "definition": "CREATE INDEX match_decisions_profile_idx ON private.match_decisions USING btree (profile_id)"
+      },
+      {
+        "name": "notification_logs_like_type_unique",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX notification_logs_like_type_unique ON private.notification_logs USING btree (like_id, notification_type)"
+      },
+      {
+        "name": "notification_logs_match_recipient_once",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX notification_logs_match_recipient_once ON private.notification_logs USING btree (match_id, notification_type, recipient_id) WHERE (match_id IS NOT NULL)"
+      },
+      {
+        "name": "notification_logs_pending_idx",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE INDEX notification_logs_pending_idx ON private.notification_logs USING btree (created_at) WHERE (status = 'pending'::text)"
+      },
+      {
+        "name": "notification_logs_pkey",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX notification_logs_pkey ON private.notification_logs USING btree (id)"
+      },
+      {
+        "name": "notification_logs_recipient_id_created_at_idx",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE INDEX notification_logs_recipient_id_created_at_idx ON private.notification_logs USING btree (recipient_id, created_at DESC)"
+      },
+      {
+        "name": "notification_logs_retryable_idx",
+        "table": "notification_logs",
+        "schema": "private",
+        "definition": "CREATE INDEX notification_logs_retryable_idx ON private.notification_logs USING btree (created_at) WHERE (status = 'failed'::text)"
+      },
+      {
+        "name": "payments_pkey",
+        "table": "payments",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX payments_pkey ON private.payments USING btree (id)"
+      },
+      {
+        "name": "payments_profile_idx",
+        "table": "payments",
+        "schema": "private",
+        "definition": "CREATE INDEX payments_profile_idx ON private.payments USING btree (profile_id)"
+      },
+      {
+        "name": "payments_provider_environment_merchant_id_provider_payment__key",
+        "table": "payments",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX payments_provider_environment_merchant_id_provider_payment__key ON private.payments USING btree (provider, environment, merchant_id, provider_payment_id)"
+      },
+      {
+        "name": "payments_user_created_idx",
+        "table": "payments",
+        "schema": "private",
+        "definition": "CREATE INDEX payments_user_created_idx ON private.payments USING btree (user_id, created_at DESC)"
+      },
+      {
+        "name": "payments_user_id_request_id_key",
+        "table": "payments",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX payments_user_id_request_id_key ON private.payments USING btree (user_id, request_id)"
+      },
+      {
+        "name": "profile_contacts_pkey",
+        "table": "profile_contacts",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_contacts_pkey ON private.profile_contacts USING btree (profile_id)"
+      },
+      {
+        "name": "profile_owners_pair_unique",
+        "table": "profile_owners",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_owners_pair_unique ON private.profile_owners USING btree (profile_id, user_id)"
+      },
+      {
+        "name": "profile_owners_pkey",
+        "table": "profile_owners",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_owners_pkey ON private.profile_owners USING btree (profile_id)"
+      },
+      {
+        "name": "profile_owners_user_id_key",
+        "table": "profile_owners",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_owners_user_id_key ON private.profile_owners USING btree (user_id)"
+      },
+      {
+        "name": "profile_photos_object_path_key",
+        "table": "profile_photos",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_photos_object_path_key ON private.profile_photos USING btree (object_path)"
+      },
+      {
+        "name": "profile_photos_pkey",
+        "table": "profile_photos",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_photos_pkey ON private.profile_photos USING btree (id)"
+      },
+      {
+        "name": "profile_photos_position_idx",
+        "table": "profile_photos",
+        "schema": "private",
+        "definition": "CREATE UNIQUE INDEX profile_photos_position_idx ON private.profile_photos USING btree (profile_id, \"position\") WHERE (status <> 'removed'::text)"
+      },
+      {
+        "name": "coordinators_auth_user_idx",
+        "table": "coordinators",
+        "schema": "public",
+        "definition": "CREATE INDEX coordinators_auth_user_idx ON public.coordinators USING btree (auth_user_id) WHERE active"
+      },
+      {
+        "name": "coordinators_email_key",
+        "table": "coordinators",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX coordinators_email_key ON public.coordinators USING btree (email)"
+      },
+      {
+        "name": "coordinators_pkey",
+        "table": "coordinators",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX coordinators_pkey ON public.coordinators USING btree (id)"
+      },
+      {
+        "name": "dating_profiles_browse_idx",
+        "table": "dating_profiles",
+        "schema": "public",
+        "definition": "CREATE INDEX dating_profiles_browse_idx ON public.dating_profiles USING btree (gender, created_at DESC, id) WHERE (status = 'approved'::text)"
+      },
+      {
+        "name": "dating_profiles_coordinator_idx",
+        "table": "dating_profiles",
+        "schema": "public",
+        "definition": "CREATE INDEX dating_profiles_coordinator_idx ON public.dating_profiles USING btree (coordinator_id, created_at DESC)"
+      },
+      {
+        "name": "dating_profiles_pkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX dating_profiles_pkey ON public.dating_profiles USING btree (id)"
+      },
+      {
+        "name": "dating_profiles_reviewed_by_idx",
+        "table": "dating_profiles",
+        "schema": "public",
+        "definition": "CREATE INDEX dating_profiles_reviewed_by_idx ON public.dating_profiles USING btree (reviewed_by)"
+      },
+      {
+        "name": "likes_pkey",
+        "table": "likes",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX likes_pkey ON public.likes USING btree (id)"
+      },
+      {
+        "name": "likes_recipient_profile_id_created_at_idx",
+        "table": "likes",
+        "schema": "public",
+        "definition": "CREATE INDEX likes_recipient_profile_id_created_at_idx ON public.likes USING btree (recipient_profile_id, created_at DESC)"
+      },
+      {
+        "name": "likes_sender_recipient_unique",
+        "table": "likes",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX likes_sender_recipient_unique ON public.likes USING btree (sender_profile_id, recipient_profile_id)"
+      },
+      {
+        "name": "matches_pkey",
+        "table": "matches",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX matches_pkey ON public.matches USING btree (id)"
+      },
+      {
+        "name": "matches_profile_high_idx",
+        "table": "matches",
+        "schema": "public",
+        "definition": "CREATE INDEX matches_profile_high_idx ON public.matches USING btree (profile_high, created_at DESC)"
+      },
+      {
+        "name": "matches_profile_low_profile_high_key",
+        "table": "matches",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX matches_profile_low_profile_high_key ON public.matches USING btree (profile_low, profile_high)"
+      }
+    ],
+    "policies": [
+      {
+        "cmd": "SELECT",
+        "qual": "((auth_user_id = ( SELECT auth.uid() AS uid)) AND active AND ( SELECT is_current_account_active() AS is_current_account_active))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "coordinators",
+        "permissive": "PERMISSIVE",
+        "policyname": "coordinator reads own account",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT is_current_account_active() AS is_current_account_active) AND (coordinator_id IN ( SELECT coordinators.id\n   FROM coordinators\n  WHERE ((coordinators.auth_user_id = ( SELECT auth.uid() AS uid)) AND coordinators.active))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "dating_profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "coordinator can select own profiles",
+        "schemaname": "public",
+        "with_check": null
+      }
+    ],
+    "triggers": [
+      {
+        "name": "like_transactions_append_only",
+        "type": 27,
+        "table": "like_transactions",
+        "schema": "private",
+        "enabled": "O",
+        "function": "private.guard_ledger"
+      },
+      {
+        "name": "match_decision_guard",
+        "type": 23,
+        "table": "match_decisions",
+        "schema": "private",
+        "enabled": "O",
+        "function": "private.guard_match_decision"
+      },
+      {
+        "name": "profile_owner_immutable",
+        "type": 19,
+        "table": "profile_owners",
+        "schema": "private",
+        "enabled": "O",
+        "function": "private.guard_profile_owner"
+      },
+      {
+        "name": "set_updated_at",
+        "type": 19,
+        "table": "dating_profiles",
+        "schema": "public",
+        "enabled": "O",
+        "function": "public.handle_updated_at"
+      }
+    ],
+    "functions": [
+      {
+        "name": "guard_ledger",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "trigger",
+        "schema": "private",
+        "definer": false,
+        "body_md5": "b990719f980e1b13a4ab5710030b3e66",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "guard_match_decision",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "trigger",
+        "schema": "private",
+        "definer": false,
+        "body_md5": "5ec2d8eab0da2ac2c1a1dc5c8ce1e7fe",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "guard_profile_owner",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "trigger",
+        "schema": "private",
+        "definer": false,
+        "body_md5": "f38568692c95d9f676cb69f40ee474f5",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "insert_dating_profile",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "private",
+        "definer": true,
+        "body_md5": "a02e26994e024a6b66060125c3b8da63",
+        "arguments": "p_coordinator_id uuid, p_nickname text, p_gender text, p_age integer, p_company text, p_height_cm integer, p_mbti text, p_preferred_skin_types text[], p_preferred_animal_types text[], p_preferred_face_types text[], p_preferred_age_min integer, p_preferred_age_max integer, p_preferred_age_any boolean, p_preferred_height_min integer, p_preferred_height_max integer, p_preferred_height_any boolean, p_preferred_body_types text[], p_preferred_traits text[], p_self_skin_types text[], p_self_animal_types text[], p_self_face_types text[], p_self_traits text[], p_self_body_type text, p_phone_number text, p_kakao_notification_enabled boolean",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "my_profile",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "private",
+        "definer": true,
+        "body_md5": "d9677747d1a249bf5f3881fd9f11fdbd",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "require_member",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "private",
+        "definer": true,
+        "body_md5": "c8c410acae424cc59cca78fdb9897ada",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "valid_profile_values",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "boolean",
+        "schema": "private",
+        "definer": false,
+        "body_md5": "0612a0c44508010c403d113a8ebefff8",
+        "arguments": "p_values text[]",
+        "volatility": "i",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "claim_like_notification",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "TABLE(log_id uuid, recipient_id uuid, phone_number text, should_send boolean, skip_reason text)",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "db052201e88b2901063baf8ffa244f13",
+        "arguments": "p_like_id uuid",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "finish_like_notification",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "void",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "7407105bfbacf0f90d21e9587bef6493",
+        "arguments": "p_log_id uuid, p_status text, p_provider_message_id text, p_error text",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "get_my_like_balance",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "integer",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "ab73d010f323a0040f56a3e87a0ecb1a",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "get_my_profile_id",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "67461bb4e1c466691707c18a89d3c167",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "handle_updated_at",
+        "config": null,
+        "result": "trigger",
+        "schema": "public",
+        "definer": false,
+        "body_md5": "301a884953d37769916294bb60562e05",
+        "arguments": "",
+        "volatility": "v",
+        "anon_execute": true,
+        "authenticated_execute": true
+      },
+      {
+        "name": "is_current_account_active",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "boolean",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "246be89c7dc8ed5d09c4dbbc2c79dd3d",
+        "arguments": "",
+        "volatility": "s",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "link_reviewed_legacy_profile",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "void",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "d8a04512b7181bcce8e00a391dcdc9c5",
+        "arguments": "p_profile_id uuid, p_user_id uuid",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "list_active_coordinators",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "TABLE(id uuid, name text)",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "80b912c43dba9416853c35b2b0b758e1",
+        "arguments": "",
+        "volatility": "s",
+        "anon_execute": true,
+        "authenticated_execute": true
+      },
+      {
+        "name": "review_dating_profile",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "void",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "3751c6e1a1216350608e408481dd767e",
+        "arguments": "p_profile_id uuid, p_status text, p_reason text",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "send_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "131bc14ff7fb3af68374b89480c82367",
+        "arguments": "p_target_profile_id uuid",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "submit_dating_profile",
+        "config": [
+          "search_path=\"\""
+        ],
+        "result": "uuid",
+        "schema": "public",
+        "definer": true,
+        "body_md5": "5e7f4fef6c1d57c4b8c250ac75df9914",
+        "arguments": "p_coordinator_id uuid, p_nickname text, p_gender text, p_age integer, p_company text, p_height_cm integer, p_mbti text, p_preferred_skin_types text[], p_preferred_animal_types text[], p_preferred_face_types text[], p_preferred_age_min integer, p_preferred_age_max integer, p_preferred_age_any boolean, p_preferred_height_min integer, p_preferred_height_max integer, p_preferred_height_any boolean, p_preferred_body_types text[], p_preferred_traits text[], p_self_skin_types text[], p_self_animal_types text[], p_self_face_types text[], p_self_traits text[], p_self_body_type text, p_phone_number text, p_kakao_notification_enabled boolean",
+        "volatility": "v",
+        "anon_execute": false,
+        "authenticated_execute": true
+      }
+    ],
+    "constraints": [
+      {
+        "name": "admin_audit_logs_actor_user_id_fkey",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (actor_user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "admin_audit_logs_pkey",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "admin_audit_logs_profile_id_fkey",
+        "table": "admin_audit_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "admin_members_pkey",
+        "table": "admin_members",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "admin_members_user_id_fkey",
+        "table": "admin_members",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "like_transactions_check",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((((kind = 'purchase'::text) AND (delta = 10) AND (payment_id IS NOT NULL) AND (like_id IS NULL) AND (operation_id IS NULL)) OR ((kind = 'sent_like'::text) AND (delta = '-1'::integer) AND (like_id IS NOT NULL) AND (payment_id IS NULL) AND (operation_id IS NULL)) OR ((kind = 'refund'::text) AND (delta < 0) AND (payment_id IS NOT NULL) AND (like_id IS NULL) AND (operation_id IS NOT NULL)) OR ((kind = 'admin_adjustment'::text) AND (payment_id IS NULL) AND (like_id IS NULL) AND (operation_id IS NOT NULL))))"
+      },
+      {
+        "name": "like_transactions_delta_check",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((delta <> 0))"
+      },
+      {
+        "name": "like_transactions_kind_check",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((kind = ANY (ARRAY['purchase'::text, 'sent_like'::text, 'refund'::text, 'admin_adjustment'::text])))"
+      },
+      {
+        "name": "like_transactions_like_id_fkey",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (like_id) REFERENCES likes(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "like_transactions_operation_id_key",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (operation_id)"
+      },
+      {
+        "name": "like_transactions_payment_id_fkey",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (payment_id) REFERENCES private.payments(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "like_transactions_pkey",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "like_transactions_user_id_fkey",
+        "table": "like_transactions",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES private.like_wallets(user_id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "like_wallets_balance_check",
+        "table": "like_wallets",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((balance >= 0))"
+      },
+      {
+        "name": "like_wallets_pkey",
+        "table": "like_wallets",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "like_wallets_user_id_fkey",
+        "table": "like_wallets",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "match_decisions_check",
+        "table": "match_decisions",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK (((decision = 'pending'::text) = (decided_at IS NULL)))"
+      },
+      {
+        "name": "match_decisions_decision_check",
+        "table": "match_decisions",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((decision = ANY (ARRAY['pending'::text, 'match'::text, 'sorry'::text])))"
+      },
+      {
+        "name": "match_decisions_match_id_fkey",
+        "table": "match_decisions",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "match_decisions_pkey",
+        "table": "match_decisions",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (match_id, profile_id)"
+      },
+      {
+        "name": "match_decisions_profile_id_fkey",
+        "table": "match_decisions",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "notification_logs_attempts_check",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((attempts >= 0))"
+      },
+      {
+        "name": "notification_logs_like_id_fkey",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (like_id) REFERENCES likes(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "notification_logs_like_type_unique",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (like_id, notification_type)"
+      },
+      {
+        "name": "notification_logs_match_id_fkey",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "notification_logs_pkey",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "notification_logs_recipient_id_fkey",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (recipient_id) REFERENCES dating_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "notification_logs_source_check",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((((notification_type = 'kakao_alimtalk_like_received'::text) AND (like_id IS NOT NULL) AND (match_id IS NULL)) OR ((notification_type = ANY (ARRAY['MUTUAL_LIKE'::text, 'FINAL_MATCH'::text])) AND (like_id IS NULL) AND (match_id IS NOT NULL))))"
+      },
+      {
+        "name": "notification_logs_status_check",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'processing'::text, 'sent'::text, 'failed'::text, 'skipped'::text, 'delivery_unknown'::text])))"
+      },
+      {
+        "name": "notification_logs_type_check",
+        "table": "notification_logs",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((notification_type = ANY (ARRAY['kakao_alimtalk_like_received'::text, 'MUTUAL_LIKE'::text, 'FINAL_MATCH'::text])))"
+      },
+      {
+        "name": "payments_amount_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((amount = 1500))"
+      },
+      {
+        "name": "payments_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK (((credited_at IS NULL) OR (approved_at IS NOT NULL)))"
+      },
+      {
+        "name": "payments_currency_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((currency = 'KRW'::text))"
+      },
+      {
+        "name": "payments_environment_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((environment = ANY (ARRAY['test'::text, 'live'::text])))"
+      },
+      {
+        "name": "payments_like_quantity_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((like_quantity = 10))"
+      },
+      {
+        "name": "payments_pkey",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "payments_product_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((product = 'likes_10'::text))"
+      },
+      {
+        "name": "payments_profile_id_fkey",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "payments_profile_id_user_id_fkey",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id, user_id) REFERENCES private.profile_owners(profile_id, user_id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "payments_provider_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((provider = 'kakaopay'::text))"
+      },
+      {
+        "name": "payments_provider_environment_merchant_id_provider_payment__key",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (provider, environment, merchant_id, provider_payment_id)"
+      },
+      {
+        "name": "payments_status_check",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['created'::text, 'ready'::text, 'approving'::text, 'verification_pending'::text, 'approved'::text, 'failed'::text, 'cancelled'::text, 'refunded'::text])))"
+      },
+      {
+        "name": "payments_user_id_fkey",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "payments_user_id_request_id_key",
+        "table": "payments",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (user_id, request_id)"
+      },
+      {
+        "name": "profile_contacts_kakao_id_check",
+        "table": "profile_contacts",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK (((kakao_id IS NULL) OR ((length(btrim(kakao_id)) >= 1) AND (length(btrim(kakao_id)) <= 100))))"
+      },
+      {
+        "name": "profile_contacts_phone_number_format",
+        "table": "profile_contacts",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((phone_number ~ '^01[016789][0-9]{7,8}$'::text))"
+      },
+      {
+        "name": "profile_contacts_pkey",
+        "table": "profile_contacts",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (profile_id)"
+      },
+      {
+        "name": "profile_contacts_profile_id_fkey",
+        "table": "profile_contacts",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "profile_owners_link_method_check",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((link_method = ANY (ARRAY['registration'::text, 'reviewed_legacy'::text])))"
+      },
+      {
+        "name": "profile_owners_pair_unique",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (profile_id, user_id)"
+      },
+      {
+        "name": "profile_owners_pkey",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (profile_id)"
+      },
+      {
+        "name": "profile_owners_profile_id_fkey",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "profile_owners_user_id_fkey",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "profile_owners_user_id_key",
+        "table": "profile_owners",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (user_id)"
+      },
+      {
+        "name": "profile_photos_object_path_key",
+        "table": "profile_photos",
+        "schema": "private",
+        "validated": true,
+        "definition": "UNIQUE (object_path)"
+      },
+      {
+        "name": "profile_photos_pkey",
+        "table": "profile_photos",
+        "schema": "private",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "profile_photos_position_check",
+        "table": "profile_photos",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK (((\"position\" >= 1) AND (\"position\" <= 5)))"
+      },
+      {
+        "name": "profile_photos_profile_id_fkey",
+        "table": "profile_photos",
+        "schema": "private",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_id) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "profile_photos_status_check",
+        "table": "profile_photos",
+        "schema": "private",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'ready'::text, 'removed'::text])))"
+      },
+      {
+        "name": "coordinators_auth_user_id_fkey",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (auth_user_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "coordinators_email_key",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "UNIQUE (email)"
+      },
+      {
+        "name": "coordinators_pkey",
+        "table": "coordinators",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "dating_profiles_age_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((age > 0))"
+      },
+      {
+        "name": "dating_profiles_coordinator_id_fkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (coordinator_id) REFERENCES coordinators(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "dating_profiles_gender_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((gender = ANY (ARRAY['남'::text, '여'::text])))"
+      },
+      {
+        "name": "dating_profiles_height_cm_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((height_cm > 0))"
+      },
+      {
+        "name": "dating_profiles_pkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "dating_profiles_preferred_age_max_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_age_max IS NULL) OR (preferred_age_max > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_age_min_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_age_min IS NULL) OR (preferred_age_min > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_height_max_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_height_max IS NULL) OR (preferred_height_max > 0)))"
+      },
+      {
+        "name": "dating_profiles_preferred_height_min_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((preferred_height_min IS NULL) OR (preferred_height_min > 0)))"
+      },
+      {
+        "name": "dating_profiles_reviewed_by_fkey",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (reviewed_by) REFERENCES coordinators(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "dating_profiles_status_check",
+        "table": "dating_profiles",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'approved'::text, 'rejected'::text])))"
+      },
+      {
+        "name": "likes_distinct_profiles",
+        "table": "likes",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((sender_profile_id <> recipient_profile_id))"
+      },
+      {
+        "name": "likes_pkey",
+        "table": "likes",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "likes_recipient_profile_id_fkey",
+        "table": "likes",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (recipient_profile_id) REFERENCES dating_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "likes_sender_profile_id_fkey",
+        "table": "likes",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (sender_profile_id) REFERENCES dating_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "likes_sender_recipient_unique",
+        "table": "likes",
+        "schema": "public",
+        "validated": true,
+        "definition": "UNIQUE (sender_profile_id, recipient_profile_id)"
+      },
+      {
+        "name": "matches_check",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((profile_low < profile_high))"
+      },
+      {
+        "name": "matches_check1",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK (((status = 'mutual'::text) = (resolved_at IS NULL)))"
+      },
+      {
+        "name": "matches_pkey",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "matches_profile_high_fkey",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_high) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "matches_profile_low_fkey",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "FOREIGN KEY (profile_low) REFERENCES dating_profiles(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "matches_profile_low_profile_high_key",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "UNIQUE (profile_low, profile_high)"
+      },
+      {
+        "name": "matches_status_check",
+        "table": "matches",
+        "schema": "public",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['mutual'::text, 'final'::text, 'closed'::text])))"
+      }
+    ],
+    "table_privileges": [
+      {
+        "role": "anon",
+        "table": "admin_audit_logs",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "admin_audit_logs",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "admin_members",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "admin_members",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "like_transactions",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "like_transactions",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "like_wallets",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "like_wallets",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "match_decisions",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "match_decisions",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "notification_logs",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "notification_logs",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "payments",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "payments",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "profile_contacts",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "profile_contacts",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "profile_owners",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "profile_owners",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "profile_photos",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "profile_photos",
+        "delete": false,
+        "insert": false,
+        "schema": "private",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "coordinators",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "coordinators",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": true,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": true,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "dating_profiles",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": true,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": true,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "dating_profiles",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": true,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": true,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "likes",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "likes",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "anon",
+        "table": "matches",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      },
+      {
+        "role": "authenticated",
+        "table": "matches",
+        "delete": false,
+        "insert": false,
+        "schema": "public",
+        "select": false,
+        "update": false,
+        "trigger": false,
+        "truncate": false,
+        "references": false,
+        "any_column_select": false,
+        "any_column_update": false
+      }
+    ],
+    "private_schema_privileges": [
+      {
+        "role": "anon",
+        "usage": false,
+        "create": false
+      },
+      {
+        "role": "authenticated",
+        "usage": false,
+        "create": false
+      }
+    ]
+  }
+}

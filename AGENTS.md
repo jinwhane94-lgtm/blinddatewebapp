@@ -22,6 +22,14 @@ The application uses `HashRouter`. Important routes are:
 - `/#/manager/login`
 - `/#/manager/dashboard`
 
+## UI wording ground rules
+
+- Use `직접 소개팅 매물 등록하기` for the direct profile registration action.
+- In UI role labels (buttons, links, headings, and badges), append a small heart (`❤️`) immediately after `일반 사용자` and a crown (`👑`) immediately after `주선자`, before any action wording such as 로그인 or 회원가입.
+- Display the current year dynamically in the service footer; do not hard-code a year.
+- Render role icons as small decorative elements with `aria-hidden="true"` so accessible names remain readable. Explanatory prose does not need role icons.
+- Preserve these conventions in future UI changes unless the user explicitly changes this rule.
+
 ## Supabase safety
 
 - The frontend may use only `VITE_SUPABASE_URL` and a publishable/legacy anon key.

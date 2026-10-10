@@ -29,6 +29,8 @@ export const SELF_BODY_TYPES_MALE = ['슬림', '보통', '건장', '근육질', 
 // 나의 체형: 본인이 여자일 경우
 export const SELF_BODY_TYPES_FEMALE = ['슬림', '보통', '근육질', '통통', '뚱뚱'] as const
 
+export const LISTING_BODY_TYPES = ['슬림', '보통', '건장', '근육질', '통통', '뚱뚱'] as const
+
 export const PERSONALITY_TRAITS = [
   '착한', '다정한', '배려심 있는', '유머러스한', '대화가 잘 통하는',
   '긍정적인', '책임감 있는', '성실한', '자상한', '활발한',

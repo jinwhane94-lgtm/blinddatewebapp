@@ -1,56 +1,29 @@
-import { useEffect, useState } from 'react'
-import type { Session, User } from '@supabase/supabase-js'
-import { supabase } from '../lib/supabase'
+﻿import { useEffect, useState } from 'react'
+import { useSession } from './useSession'
 import { getCoordinatorByAuthUser } from '../services/coordinatorService'
 import type { Coordinator } from '../types'
 
-interface AuthState {
-  session: Session | null
-  user: User | null
-  coordinator: Coordinator | null
-  loading: boolean
-}
-
-export function useAuth(): AuthState {
-  const [session, setSession] = useState<Session | null>(null)
-  const [user, setUser] = useState<User | null>(null)
-  const [coordinator, setCoordinator] = useState<Coordinator | null>(null)
-  const [loading, setLoading] = useState(true)
-
+// Manager authorization is separate from membership. Auth callbacks stay synchronous.
+export function useAuth() {
+  const { session, loading: sessionLoading } = useSession()
+  const user = session?.user ?? null
+  const userId = user?.id
+  const [resolved, setResolved] = useState<{ userId: string; coordinator: Coordinator | null; failed: boolean } | null>(null)
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        try {
-          const coord = await getCoordinatorByAuthUser(session.user.id)
-          setCoordinator(coord as Coordinator | null)
-        } catch {
-          setCoordinator(null)
-        }
-      }
-      setLoading(false)
+    if (!userId) return
+    let active = true
+    void getCoordinatorByAuthUser(userId).then((coordinator) => {
+      if (active) setResolved({ userId, coordinator: coordinator as Coordinator | null, failed: false })
+    }).catch(() => {
+      if (active) setResolved({ userId, coordinator: null, failed: true })
     })
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        try {
-          const coord = await getCoordinatorByAuthUser(session.user.id)
-          setCoordinator(coord as Coordinator | null)
-        } catch {
-          setCoordinator(null)
-        }
-      } else {
-        setCoordinator(null)
-      }
-    })
-
-    return () => subscription.unsubscribe()
-  }, [])
-
-  return { session, user, coordinator, loading }
+    return () => { active = false }
+  }, [userId])
+  return {
+    session,
+    user,
+    coordinator: userId && resolved?.userId === userId ? resolved.coordinator : null,
+    lookupFailed: Boolean(userId && resolved?.userId === userId && resolved.failed),
+    loading: sessionLoading || Boolean(userId && resolved?.userId !== userId),
+  }
 }

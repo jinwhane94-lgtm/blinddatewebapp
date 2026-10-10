@@ -58,7 +58,12 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI...
 
 ### 4. DB 마이그레이션 실행
 
-Supabase Dashboard → SQL Editor 에서 다음 파일을 순서대로 실행:
+현재 연결된 프로젝트에는 001·002의 객체가 이미 있지만 migration 이력이 없습니다.
+**기존 프로젝트에 아래 파일을 재실행하지 마세요.** 현재 코드의 적용 절차는
+[PHASE 3.5 통합 준비 보고서](docs/phase3-5-integration-readiness.md)의 A~J를 따릅니다.
+001·002 이력 복구 후 003과 PHASE 3 migration을 적용해야 하며, 실제 변경은 별도 승인 대상입니다.
+
+아래는 최초 기본 구조의 파일 목록이며, 현재 앱을 위한 전체 migration 목록은 아닙니다:
 
 ```
 1. supabase/migrations/001_init.sql   ← 테이블 생성
@@ -153,6 +158,7 @@ npm run preview # 로컬에서 빌드 결과 미리보기
 | `/#/` | 서비스 소개 랜딩 페이지 |
 | `/#/apply` | 소개팅 매물 등록 (공개, 로그인 불필요) |
 | `/#/manager/login` | 주선자 로그인 |
+| `/#/profiles` | 승인된 소개팅 매물 목록 (회원 로그인 필요, 구현·검증 내용은 `docs/approved-profile-list.md` 참조) |
 | `/#/manager/dashboard` | 주선자 대시보드 (로그인 필요) |
 | `/#/dev` | 개발용 관리자 기능 (dev 빌드만) |
 
@@ -190,3 +196,7 @@ npm run preview # 로컬에서 빌드 결과 미리보기
 - ✅ RLS로 주선자별 데이터 격리
 - ✅ Production에서 주선자 자가 회원가입 불가
 - ✅ 비밀번호는 Supabase Auth가 관리 (직접 저장 없음)
+
+## 카카오 알림톡
+
+호감 수신 알림의 DB 구조, Edge Function, SOLAPI 설정, 보안 및 테스트 절차는 [docs/kakao-alimtalk.md](docs/kakao-alimtalk.md)를 참고하세요.
